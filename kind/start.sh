@@ -12,3 +12,6 @@ kind create cluster --config=conf.yaml
 
 # Deploy NGINX ingress controller
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/kind/deploy.yaml
+
+# Deploy prometheus stack
+helm install prometheus prometheus-community/kube-prometheus-stack
