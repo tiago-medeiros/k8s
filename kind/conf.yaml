@@ -1,6 +1,8 @@
 kind: Cluster
-apiVersion: kind.x-k8s.io/v1alpha4
+apiVersion: kind.sigs.k8s.io/v1alpha3
 name: kind
+featureGates:
+  GracefulNodeShutdown: true
 nodes:
 - role: control-plane
   image: kindest/node:v1.27.3@sha256:3966ac761ae0136263ffdb6cfd4db23ef8a83cba8a463690e98317add2c9ba72 
@@ -20,12 +22,19 @@ nodes:
 - role: worker
   image: kindest/node:v1.27.3@sha256:3966ac761ae0136263ffdb6cfd4db23ef8a83cba8a463690e98317add2c9ba72 
   labels:
-    tier: us-east-1a
+    az: us-east-1a
+    family: m6.4xlarge
+    instance-type: spot 
 - role: worker
   image: kindest/node:v1.27.3@sha256:3966ac761ae0136263ffdb6cfd4db23ef8a83cba8a463690e98317add2c9ba72 
   labels:
-    tier: us-east-1b
+    az: us-east-1b
+    family: r5.2xlarge
+    instance-type: ondemand
 - role: worker
   image: kindest/node:v1.27.3@sha256:3966ac761ae0136263ffdb6cfd4db23ef8a83cba8a463690e98317add2c9ba72
   labels:
-    tier: us-east-1c
+    az: us-east-1c
+    family: c5.xlarge
+    instance-type: ondemand
+
