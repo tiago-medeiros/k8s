@@ -17,4 +17,4 @@ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main
 kubectl create ns monitoring
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
-helm upgrade --install prometheus prometheus-community/kube-prometheus-stack
+helm upgrade --install -n monitoring prometheus prometheus-community/kube-prometheus-stack
